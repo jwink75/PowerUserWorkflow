@@ -39,6 +39,8 @@ add_library_directory()
 local library = require("library.general_library")
 local configuration = require("library.configuration")
 local layer = require("library.layer")
+local clef = require("library.clef")
+
 require("jetstream_config")
 --
 config = {tacet_text = "Tacet", al_fine_text = "Tacet al fine", 
@@ -9697,22 +9699,40 @@ if not bypass_dialog then
                     navigation_switch_to_slected_part()
                 end
                 if compare({"1900","treble"}) then
-                    clef_change_pre(0) --treble clef
+--                    clef_change_pre(0) --treble clef
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("treble", region)
                 end
                 if compare({"1901","alto"}) then
-                    clef_change_pre(1) -- alto clef
+--                    clef_change_pre(1) -- alto clef
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("alto", region)
                 end
                 if compare({"1902","tenor"}) then
-                    clef_change_pre(2) -- tenor clef
+--                    clef_change_pre(2) -- tenor clef
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("tenor", region)
                 end
                 if compare({"1903","bass"}) then
-                    clef_change_pre(3) -- bass clef
+--                    clef_change_pre(3) -- bass clef
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("bass", region)
                 end
-                if compare({"1904","treble8ba", "treble8vb", "treble_8vb", "treble_8ba", "treble8","treb8", "tnrvoc"}) then
-                    clef_change_pre(5) -- treble_8ba clef
+                if compare({"1904","treble8ba", "treble8vb", "treble_8vb", "treble_8ba", "tnrvox", "tenor_voice"}) then
+--                    clef_change_pre(5) -- treble_8ba clef
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("treble_8ba", region)
                 end
                 if compare({"1905","perc"}) then
-                    clef_change_pre(12) -- perc clef (new style)
+--                    clef_change_pre(12) -- perc clef (new style)
+                    local region = finenv.Region()
+                    region:SetCurrentSelection()
+                    clef.clef_change("perc_new", region)
                 end
                 if execute_function[i] == "9000" then
                     plugin_center_rehearsal_marks()
